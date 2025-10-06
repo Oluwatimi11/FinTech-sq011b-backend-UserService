@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UserManagement.API</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:UserManagement.API.Controllers.AuthController.Register(UserManagement.Core.DTOs.RegistrationDTO)" -->
+        <member name="M:UserManagement.API.Controllers.AuthController.ResendOTP(UserManagement.Core.DTOs.ResendOtpDTO)">
+            <summary>
+            Resent OTP for confirmation
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.ConfirmEmail(UserManagement.Core.DTOs.ConfirmEmailDTO)">
+            <summary>
+            Verify email with token
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.Login(UserManagement.Core.DTOs.LoginDTO)">
+            <summary>
+            Authenticate a user that has access to our application
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.GoogleLogin(UserManagement.Core.DTOs.GoogleLoginRequestDTO)">
+            <summary>
+            External login with Google Authentication
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.ForgotPassword(UserManagement.Core.DTOs.ForgotPasswordDTO)">
+            <summary>
+            Generate a reset token and send to user email address
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.ResetPassword(UserManagement.Core.DTOs.ResetPasswordDTO)">
+            <summary>
+            Reset password of a logged out user
+            </summary>
+            <param name="resetPasswordDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.ChangePassword(UserManagement.Core.DTOs.ChangePasswordDTO)">
+            <summary>
+            Change password of a logged in user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.AuthController.RefreshToken(UserManagement.Core.DTOs.RefreshTokenRequestDTO)">
+            <summary>
+            Refresh token of a logged in user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.UserController.GetUserProfile">
+            <summary>
+            Get details about a current logged in user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.UserController.GetUserById(System.String)">
+            <summary>
+            Get details about a user without authentication
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:UserManagement.API.Controllers.UserController.UploadImage(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload user's profile image
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:UserManagement.Core.Middleware.ExceptionMiddleware">
+            <summary>
+            Implementation for exception handler
+            </summary>
+        </member>
+        <member name="M:UserManagement.Core.Middleware.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Serilog.ILogger)">
+            <summary>
+            constructor
+            </summary>
+            <param name="next"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:UserManagement.Core.Middleware.ExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            /
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

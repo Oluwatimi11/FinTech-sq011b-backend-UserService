@@ -1,0 +1,18 @@
+2022-11-29 23:12:06.350 +01:00 [INF] the application has started
+2022-11-29 23:12:06.766 +01:00 [FTL]    at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/Program.cs:line 39
+2022-11-29 23:13:16.026 +01:00 [INF] the application has started
+2022-11-29 23:13:16.328 +01:00 [FTL]    at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/Program.cs:line 39
+2022-11-29 23:14:00.178 +01:00 [INF] the application has started
+2022-11-29 23:14:00.855 +01:00 [FTL]    at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/Program.cs:line 39

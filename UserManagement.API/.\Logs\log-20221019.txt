@@ -1,0 +1,1173 @@
+2022-10-19 00:56:30.127 +01:00 [INF] the application has started
+2022-10-19 00:56:33.151 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 00:56:36.434 +01:00 [INF] Executed DbCommand (125ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 00:56:36.603 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 00:56:36.656 +01:00 [INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 00:56:36.846 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 00:56:37.002 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 00:56:37.002 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 00:56:37.005 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 00:56:37.006 +01:00 [INF] Hosting environment: Development
+2022-10-19 00:56:37.006 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 00:56:39.970 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 00:56:40.151 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 186.9587ms
+2022-10-19 00:56:40.930 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 00:56:41.383 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 453.9360ms
+2022-10-19 00:58:55.348 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - -
+2022-10-19 00:58:55.409 +01:00 [INF] CORS policy execution successful.
+2022-10-19 00:58:55.483 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - - - 204 - - 137.0056ms
+2022-10-19 00:58:55.487 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 176
+2022-10-19 00:58:55.487 +01:00 [INF] CORS policy execution successful.
+2022-10-19 00:58:55.496 +01:00 [INF] CORS policy execution successful.
+2022-10-19 00:58:55.738 +01:00 [INF] CORS policy execution successful.
+2022-10-19 00:58:55.740 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 00:58:55.844 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 00:58:57.218 +01:00 [INF] Executed DbCommand (697ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 00:58:57.300 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 00:58:57.314 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 1450.3792ms
+2022-10-19 00:58:57.315 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 00:58:57.317 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 176 - 400 78 application/json;+charset=utf-8 1831.5652ms
+2022-10-19 01:01:38.074 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - -
+2022-10-19 01:01:38.087 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:01:38.124 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - - - 204 - - 28.1737ms
+2022-10-19 01:01:38.127 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 175
+2022-10-19 01:01:38.127 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:01:38.128 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:01:38.163 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:01:38.164 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:01:38.171 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:01:39.333 +01:00 [INF] Executed DbCommand (357ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:01:39.640 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:01:39.725 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:01:40.024 +01:00 [INF] Executed DbCommand (65ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:01:40.132 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:01:40.163 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:01:40.193 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:01:40.202 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:01:40.204 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:01:40.230 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:01:40.317 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:01:40.318 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:01:40.984 +01:00 [INF] Received HTTP response headers after 654.7423ms - 400
+2022-10-19 01:01:40.987 +01:00 [INF] End processing HTTP request after 671.8178ms - 400
+2022-10-19 01:01:41.273 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 01:01:41.277 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 3105.781ms
+2022-10-19 01:01:41.277 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:01:41.277 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 175 - 500 79 application/json;+charset=utf-8 3150.2642ms
+2022-10-19 01:04:55.062 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - -
+2022-10-19 01:04:55.150 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:04:55.223 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - - - 204 - - 150.1405ms
+2022-10-19 01:04:55.267 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 176
+2022-10-19 01:04:55.267 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:04:55.267 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:04:55.592 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:04:55.594 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:04:55.645 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:04:56.675 +01:00 [INF] Executed DbCommand (822ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:04:56.741 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:04:56.744 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:04:56.850 +01:00 [INF] Executed DbCommand (102ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:04:56.943 +01:00 [INF] Executed DbCommand (45ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:04:57.025 +01:00 [INF] Executed DbCommand (79ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:04:57.160 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:04:57.245 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:04:57.295 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:04:57.465 +01:00 [INF] Executed DbCommand (138ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:04:57.498 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:04:57.501 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:04:58.505 +01:00 [INF] Received HTTP response headers after 1001.7713ms - 400
+2022-10-19 01:04:58.505 +01:00 [INF] End processing HTTP request after 1009.9184ms - 400
+2022-10-19 01:04:59.495 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 01:04:59.543 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 3897.4835ms
+2022-10-19 01:04:59.546 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:04:59.619 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 176 - 500 79 application/json;+charset=utf-8 4356.7105ms
+2022-10-19 01:06:50.561 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209
+2022-10-19 01:06:50.569 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:06:50.570 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:06:50.596 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:06:50.596 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:06:50.602 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:06:51.031 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:06:51.114 +01:00 [INF] Executed DbCommand (76ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:06:51.215 +01:00 [INF] Executed DbCommand (51ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:06:51.341 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:06:51.384 +01:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:06:51.402 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:06:51.403 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:06:51.406 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:06:51.457 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:06:51.511 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:06:51.516 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:06:51.516 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:06:51.851 +01:00 [INF] Received HTTP response headers after 334.1227ms - 400
+2022-10-19 01:06:51.851 +01:00 [INF] End processing HTTP request after 334.9395ms - 400
+2022-10-19 01:06:51.969 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 01:06:51.970 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 1367.5645ms
+2022-10-19 01:06:51.970 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:06:51.970 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209 - 500 79 application/json;+charset=utf-8 1411.1909ms
+2022-10-19 01:08:14.145 +01:00 [INF] Request starting HTTP/1.1 GE2022-10-19 01:08:17.292 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0'2022-10-19 01:08:17.433 +01:00 [I2022-10-19 01:08:22.861 +01:00 [INF] Executed DbCommand (174ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:08:23.061 +01:00 [INF] Executed DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:08:23.106 +01:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:08:23.390 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:08:24.005 +01:00 [FTL]    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(IEnumerable`1 listenOptions, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplication.Run(String url)
+   at Program.<Main>$(String[] args) in /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/Program.cs:line 61
+2022-10-19 01:09:43.618 +01:00 [INF] the application has started
+2022-10-19 01:09:44.953 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 01:09:45.247 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:09:45.372 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:09:45.380 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:09:45.456 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:09:45.583 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 01:09:45.583 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 01:09:45.586 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 01:09:45.586 +01:00 [INF] Hosting environment: Development
+2022-10-19 01:09:45.586 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 01:09:52.877 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 01:09:53.501 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 629.1424ms
+2022-10-19 01:10:27.941 +01:00 [INF] the application has started
+2022-10-19 01:10:29.464 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 01:10:30.515 +01:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:10:30.617 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:10:30.623 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:10:30.696 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:10:30.771 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 01:10:30.771 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 01:10:30.774 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 01:10:30.774 +01:00 [INF] Hosting environment: Development
+2022-10-19 01:10:30.774 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 01:10:32.604 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 01:10:32.781 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 180.1782ms
+2022-10-19 01:10:33.440 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 01:10:33.605 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 164.5685ms
+2022-10-19 01:11:03.044 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209
+2022-10-19 01:11:03.076 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:11:03.084 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:11:03.207 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:11:03.209 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:11:03.268 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:11:18.868 +01:00 [INF] Executed DbCommand (763ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:11:50.068 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 01:14:49.830 +01:00 [INF] the application has started
+2022-10-19 01:14:53.375 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 01:14:55.433 +01:00 [INF] Executed DbCommand (238ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:14:55.604 +01:00 [INF] Executed DbCommand (48ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:14:55.632 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:14:55.838 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:14:56.066 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 01:14:56.066 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 01:14:56.094 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 01:14:56.094 +01:00 [INF] Hosting environment: Development
+2022-10-19 01:14:56.094 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 01:14:58.439 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 01:14:58.910 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 469.5696ms
+2022-10-19 01:15:03.689 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 01:15:04.331 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 632.2517ms
+2022-10-19 01:16:18.660 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - -
+2022-10-19 01:16:18.876 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:16:18.937 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - - - 204 - - 294.8692ms
+2022-10-19 01:16:18.938 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 175
+2022-10-19 01:16:18.939 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:16:18.945 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:16:19.039 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:16:19.041 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:16:19.074 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:16:47.288 +01:00 [INF] Executed DbCommand (189ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:16:53.738 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:16:53.745 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:16:53.959 +01:00 [INF] Executed DbCommand (103ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:16:55.577 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:16:55.725 +01:00 [INF] Executed DbCommand (129ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:16:55.804 +01:00 [INF] Executed DbCommand (77ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:16:55.847 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:16:55.921 +01:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:16:56.147 +01:00 [INF] Executed DbCommand (210ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:17:05.160 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:17:05.162 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:17:05.783 +01:00 [INF] Received HTTP response headers after 614.2315ms - 400
+2022-10-19 01:17:05.783 +01:00 [INF] End processing HTTP request after 628.438ms - 400
+2022-10-19 01:23:14.248 +01:00 [INF] the application has started
+2022-10-19 01:23:15.622 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 01:23:16.115 +01:00 [INF] Executed DbCommand (47ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:23:16.236 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:23:16.268 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:23:16.346 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:23:16.415 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 01:23:16.440 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 01:23:16.542 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 01:23:16.542 +01:00 [INF] Hosting environment: Development
+2022-10-19 01:23:16.542 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 01:23:18.834 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 01:23:19.167 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 362.2684ms
+2022-10-19 01:23:21.088 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 01:23:21.234 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 147.0275ms
+2022-10-19 01:23:35.925 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209
+2022-10-19 01:23:36.006 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:23:36.011 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:23:36.074 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:23:36.078 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:23:36.139 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:24:38.783 +01:00 [INF] Executed DbCommand (33,995ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:24:41.962 +01:00 [INF] Executed DbCommand (2,191ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:24:42.404 +01:00 [INF] Executed DbCommand (408ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:24:43.589 +01:00 [INF] Executed DbCommand (952ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:24:44.003 +01:00 [INF] Executed DbCommand (178ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:24:46.764 +01:00 [INF] Executed DbCommand (2,704ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:24:47.500 +01:00 [INF] Executed DbCommand (707ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:24:47.606 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:24:47.686 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:25:11.223 +01:00 [INF] Executed DbCommand (23,455ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:25:12.595 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:25:12.607 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:25:14.143 +01:00 [INF] Received HTTP response headers after 1519.0742ms - 400
+2022-10-19 01:25:14.148 +01:00 [INF] End processing HTTP request after 1585.795ms - 400
+2022-10-19 01:51:21.609 +01:00 [INF] the application has started
+2022-10-19 01:51:22.625 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 01:51:22.972 +01:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:51:23.070 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:51:23.078 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:51:23.140 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:51:23.207 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 01:51:23.207 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 01:51:23.209 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 01:51:23.209 +01:00 [INF] Hosting environment: Development
+2022-10-19 01:51:23.209 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 01:51:24.426 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 01:51:24.517 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 97.3520ms
+2022-10-19 01:51:24.662 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-bundle.js - -
+2022-10-19 01:51:24.663 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui.css - -
+2022-10-19 01:51:24.747 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - -
+2022-10-19 01:51:24.893 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2022-10-19 01:51:24.894 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui.css - - - 200 143632 text/css 230.8505ms
+2022-10-19 01:51:24.972 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-10-19 01:51:25.112 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-10-19 01:51:25.114 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 365.3025ms
+2022-10-19 01:51:25.115 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 452.8422ms
+2022-10-19 01:51:25.225 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 01:51:25.324 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 99.0239ms
+2022-10-19 01:53:27.649 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209
+2022-10-19 01:53:27.671 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:53:27.688 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:53:27.736 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:53:27.738 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:53:27.753 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:53:41.458 +01:00 [INF] Executed DbCommand (53ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:54:18.588 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 01:54:28.258 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 60501.7782ms
+2022-10-19 01:54:28.260 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:54:33.943 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209 - 400 78 application/json;+charset=utf-8 66296.3790ms
+2022-10-19 01:55:18.926 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 210
+2022-10-19 01:55:18.928 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:55:18.929 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:55:18.937 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:55:18.937 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:55:18.938 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:55:36.675 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:55:51.244 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:55:51.349 +01:00 [INF] Executed DbCommand (76ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:55:51.496 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:55:54.841 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:55:54.872 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:55:54.875 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:55:54.882 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:55:54.909 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:55:54.948 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:55:57.437 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:55:57.438 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:55:57.883 +01:00 [INF] Received HTTP response headers after 441.6963ms - 400
+2022-10-19 01:55:57.883 +01:00 [INF] End processing HTTP request after 447.3013ms - 400
+2022-10-19 01:56:51.772 +01:00 [INF] the application has started
+2022-10-19 01:56:52.862 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 01:56:53.121 +01:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 01:56:53.220 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 01:56:53.226 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 01:56:53.299 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 01:56:53.614 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 01:56:53.634 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 01:56:53.637 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 01:56:53.637 +01:00 [INF] Hosting environment: Development
+2022-10-19 01:56:53.637 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 01:56:54.842 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 01:56:54.896 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 55.3565ms
+2022-10-19 01:56:55.119 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 01:56:55.212 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 93.0963ms
+2022-10-19 01:58:01.477 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 209
+2022-10-19 01:58:01.502 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:58:01.507 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:58:01.556 +01:00 [INF] CORS policy execution successful.
+2022-10-19 01:58:01.557 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 01:58:01.574 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 01:58:10.936 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:58:24.124 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:58:24.188 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:58:24.344 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 01:58:25.744 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:58:25.772 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 01:58:25.774 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 01:58:25.806 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 01:58:25.833 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 01:58:25.899 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 01:58:27.460 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:58:27.462 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 01:58:27.814 +01:00 [INF] Received HTTP response headers after 349.8055ms - 400
+2022-10-19 01:58:27.814 +01:00 [INF] End processing HTTP request after 359.7253ms - 400
+2022-10-19 02:13:59.097 +01:00 [INF] the application has started
+2022-10-19 02:14:00.450 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 02:14:00.764 +01:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 02:14:00.872 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 02:14:00.880 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 02:14:00.961 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 02:14:01.087 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 02:14:01.087 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 02:14:01.090 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 02:14:01.090 +01:00 [INF] Hosting environment: Development
+2022-10-19 02:14:01.090 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 02:14:02.298 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 02:14:02.396 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 101.0055ms
+2022-10-19 02:14:02.580 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 02:14:02.644 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 63.4263ms
+2022-10-19 02:14:31.989 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 210
+2022-10-19 02:14:32.012 +01:00 [INF] CORS policy execution successful.
+2022-10-19 02:14:32.013 +01:00 [INF] CORS policy execution successful.
+2022-10-19 02:14:32.058 +01:00 [INF] CORS policy execution successful.
+2022-10-19 02:14:32.059 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 02:14:32.078 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 02:14:38.472 +01:00 [INF] Executed DbCommand (188ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 02:14:42.876 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 02:14:42.889 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 02:14:42.977 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 02:14:44.316 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 02:14:44.344 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 02:14:44.346 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 02:14:44.353 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 02:14:44.381 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 02:14:44.391 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 02:14:46.338 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 02:14:46.339 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 02:14:49.389 +01:00 [INF] Received HTTP response headers after 3044.899ms - 400
+2022-10-19 02:14:49.390 +01:00 [INF] End processing HTTP request after 3056.57ms - 400
+2022-10-19 11:34:56.134 +01:00 [INF] the application has started
+2022-10-19 11:34:57.147 +01:00 [INF] Entity Framework Core 6.0.9 initialized 'UserManagementDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: MaxPoolSize=1024 
+2022-10-19 11:34:57.524 +01:00 [INF] Executed DbCommand (42ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+
+SELECT CASE WHEN COUNT(*) = 0 THEN FALSE ELSE TRUE END
+FROM pg_class AS cls
+JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+WHERE
+        cls.relkind IN ('r', 'v', 'm', 'f', 'p') AND
+        ns.nspname NOT IN ('pg_catalog', 'information_schema') AND
+        -- Exclude tables which are members of PG extensions
+        NOT EXISTS (
+            SELECT 1 FROM pg_depend WHERE
+                classid=(
+                    SELECT cls.oid
+                    FROM pg_class AS cls
+                             JOIN pg_namespace AS ns ON ns.oid = cls.relnamespace
+                    WHERE relname='pg_class' AND ns.nspname='pg_catalog'
+                ) AND
+                objid=cls.oid AND
+                deptype IN ('e', 'x')
+        )
+2022-10-19 11:34:57.639 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetRoles" AS a)
+2022-10-19 11:34:57.657 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AspNetUsers" AS a)
+2022-10-19 11:34:57.734 +01:00 [INF] User profile is available. Using '/Users/thebluehood/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2022-10-19 11:34:57.805 +01:00 [INF] Now listening on: https://localhost:7224
+2022-10-19 11:34:57.805 +01:00 [INF] Now listening on: http://localhost:5224
+2022-10-19 11:34:57.808 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-10-19 11:34:57.808 +01:00 [INF] Hosting environment: Development
+2022-10-19 11:34:57.808 +01:00 [INF] Content root path: /Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.API/
+2022-10-19 11:34:59.942 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 11:35:00.177 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 237.9689ms
+2022-10-19 11:35:00.752 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-bundle.js - -
+2022-10-19 11:35:00.752 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui.css - -
+2022-10-19 11:35:00.906 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - -
+2022-10-19 11:35:01.068 +01:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2022-10-19 11:35:01.069 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui.css - - - 200 143632 text/css 327.5577ms
+2022-10-19 11:35:01.198 +01:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2022-10-19 11:35:01.265 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-standalone-preset.js - - - 200 337162 application/javascript 336.4122ms
+2022-10-19 11:35:01.295 +01:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2022-10-19 11:35:01.295 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/swagger-ui-bundle.js - - - 200 1092889 application/javascript 554.3873ms
+2022-10-19 11:35:01.584 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 11:35:01.706 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 121.9007ms
+2022-10-19 11:35:31.293 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 210
+2022-10-19 11:35:31.335 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:35:31.339 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:35:31.410 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:35:31.412 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 11:35:31.438 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 11:35:39.967 +01:00 [INF] Executed DbCommand (67ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:35:43.778 +01:00 [INF] Executed DbCommand (66ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 11:35:43.858 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:35:44.120 +01:00 [INF] Executed DbCommand (125ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 11:35:45.935 +01:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 11:35:45.962 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 11:35:45.978 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 11:35:46.006 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 11:35:46.060 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:35:46.119 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 11:35:47.807 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 11:35:47.809 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 11:35:52.212 +01:00 [INF] Received HTTP response headers after 4398.1929ms - 201
+2022-10-19 11:35:52.213 +01:00 [INF] End processing HTTP request after 4408.8557ms - 201
+2022-10-19 11:36:02.921 +01:00 [INF] Start processing HTTP request POST "https://localhost:5000/api/v1/Notification/send-email"
+2022-10-19 11:36:02.921 +01:00 [INF] Sending HTTP request POST "https://localhost:5000/api/v1/Notification/send-email"
+2022-10-19 11:36:08.616 +01:00 [INF] Received HTTP response headers after 5695.3757ms - 200
+2022-10-19 11:36:08.620 +01:00 [INF] End processing HTTP request after 5698.6729ms - 200
+2022-10-19 11:40:13.934 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/index.html - -
+2022-10-19 11:40:14.482 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/index.html - - - 200 - text/html;charset=utf-8 642.6515ms
+2022-10-19 11:40:14.708 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 11:40:15.354 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 283826.155ms
+2022-10-19 11:40:15.388 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 11:40:15.537 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/Auth/register application/json 210 - 201 159 application/json;+charset=utf-8 284266.0431ms
+2022-10-19 11:40:28.539 +01:00 [INF] Request starting HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - -
+2022-10-19 11:40:29.197 +01:00 [INF] Request finished HTTP/1.1 GET https://localhost:7224/swagger/FintechOpenAPI/swagger.json - - - 200 - application/json;charset=utf-8 657.6660ms
+2022-10-19 11:41:29.738 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - -
+2022-10-19 11:41:29.752 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:41:29.763 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/register - - - 204 - - 26.3647ms
+2022-10-19 11:41:29.775 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 176
+2022-10-19 11:41:29.776 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:41:29.779 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:41:29.811 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:41:29.811 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 11:41:29.827 +01:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(UserManagement.Core.DTOs.RegistrationDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 11:41:30.424 +01:00 [INF] Executed DbCommand (458ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:41:30.509 +01:00 [INF] Executed DbCommand (35ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 11:41:30.530 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:41:30.620 +01:00 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?' (DbType = Boolean), @p6='?', @p7='?', @p8='?' (DbType = Boolean), @p9='?', @p10='?' (DbType = Boolean), @p11='?' (DbType = DateTime), @p12='?', @p13='?', @p14='?', @p15='?', @p16='?' (DbType = Boolean), @p17='?', @p18='?', @p19='?' (DbType = DateTime), @p20='?', @p21='?' (DbType = Boolean), @p22='?' (DbType = DateTime), @p23='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "ImageUrl", "IsActive", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Publicid", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UpdatedAt", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);
+2022-10-19 11:41:30.699 +01:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 11:41:30.753 +01:00 [INF] Executed DbCommand (46ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE (a."UserId" = @__p_0) AND (a."RoleId" = @__p_1)
+LIMIT 1
+2022-10-19 11:41:30.777 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2
+2022-10-19 11:41:30.981 +01:00 [INF] Executed DbCommand (122ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 11:41:31.100 +01:00 [INF] Executed DbCommand (47ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:41:31.278 +01:00 [INF] Executed DbCommand (101ms) [Parameters=[@p0='?', @p1='?', @p25='?', @p2='?' (DbType = Int32), @p3='?', @p26='?', @p4='?' (DbType = DateTime), @p5='?', @p6='?' (DbType = Boolean), @p7='?', @p8='?', @p9='?' (DbType = Boolean), @p10='?', @p11='?' (DbType = Boolean), @p12='?' (DbType = DateTime), @p13='?', @p14='?', @p15='?', @p16='?', @p17='?' (DbType = Boolean), @p18='?', @p19='?', @p20='?' (DbType = DateTime), @p21='?', @p22='?' (DbType = Boolean), @p23='?' (DbType = DateTime), @p24='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "CreatedAt" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "FirstName" = @p7, "ImageUrl" = @p8, "IsActive" = @p9, "LastName" = @p10, "LockoutEnabled" = @p11, "LockoutEnd" = @p12, "NormalizedEmail" = @p13, "NormalizedUserName" = @p14, "PasswordHash" = @p15, "PhoneNumber" = @p16, "PhoneNumberConfirmed" = @p17, "Publicid" = @p18, "RefreshToken" = @p19, "RefreshTokenExpiryTime" = @p20, "SecurityStamp" = @p21, "TwoFactorEnabled" = @p22, "UpdatedAt" = @p23, "UserName" = @p24
+WHERE "Id" = @p25 AND "ConcurrencyStamp" = @p26;
+2022-10-19 11:41:31.283 +01:00 [INF] Start processing HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 11:41:31.283 +01:00 [INF] Sending HTTP request POST "https://localhost:7225/api/Wallets/create-wallet"
+2022-10-19 11:41:34.517 +01:00 [INF] Received HTTP response headers after 3234.3222ms - 201
+2022-10-19 11:41:34.519 +01:00 [INF] End processing HTTP request after 3236.4698ms - 201
+2022-10-19 11:41:34.769 +01:00 [INF] Start processing HTTP request POST "https://localhost:5000/api/v1/Notification/send-email"
+2022-10-19 11:41:34.772 +01:00 [INF] Sending HTTP request POST "https://localhost:5000/api/v1/Notification/send-email"
+2022-10-19 11:41:39.198 +01:00 [INF] Received HTTP response headers after 4422.885ms - 200
+2022-10-19 11:41:39.198 +01:00 [INF] End processing HTTP request after 4428.9034ms - 200
+2022-10-19 11:41:39.213 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.RegistrationResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 11:41:39.219 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Register (UserManagement.API) in 9392.1221ms
+2022-10-19 11:41:39.219 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Register (UserManagement.API)'
+2022-10-19 11:41:39.220 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/register application/json 176 - 201 159 application/json;+charset=utf-8 9451.5835ms
+2022-10-19 11:42:22.742 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/confirm-email - -
+2022-10-19 11:42:22.754 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:42:22.760 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/confirm-email - - - 204 - - 21.8856ms
+2022-10-19 11:42:22.860 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/confirm-email application/json 63
+2022-10-19 11:42:22.860 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:42:22.864 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:42:22.932 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:42:22.932 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.ConfirmEmail (UserManagement.API)'
+2022-10-19 11:42:22.987 +01:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ConfirmEmail(UserManagement.Core.DTOs.ConfirmEmailDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 11:42:23.437 +01:00 [INF] Executed DbCommand (376ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:42:23.478 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-10-19 11:42:23.481 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.ConfirmEmail (UserManagement.API) in 493.6852ms
+2022-10-19 11:42:23.481 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.ConfirmEmail (UserManagement.API)'
+2022-10-19 11:42:23.481 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/confirm-email application/json 63 - 401 91 application/json;+charset=utf-8 621.3133ms
+2022-10-19 11:43:13.750 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/confirm-email - -
+2022-10-19 11:43:13.755 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:13.760 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/confirm-email - - - 204 - - 11.5352ms
+2022-10-19 11:43:13.766 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/confirm-email application/json 63
+2022-10-19 11:43:13.766 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:13.766 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:13.776 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:13.784 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.ConfirmEmail (UserManagement.API)'
+2022-10-19 11:43:13.793 +01:00 [INF] Route matched with {action = "ConfirmEmail", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ConfirmEmail(UserManagement.Core.DTOs.ConfirmEmailDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 11:43:14.066 +01:00 [INF] Executed DbCommand (222ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:43:14.102 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 11:43:14.105 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:43:14.202 +01:00 [INF] Executed DbCommand (30ms) [Parameters=[@p23='?', @p0='?' (DbType = Int32), @p1='?', @p24='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTime), @p11='?', @p12='?', @p13='?', @p14='?', @p15='?' (DbType = Boolean), @p16='?', @p17='?', @p18='?' (DbType = DateTime), @p19='?', @p20='?' (DbType = Boolean), @p21='?' (DbType = DateTime), @p22='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "CreatedAt" = @p2, "Email" = @p3, "EmailConfirmed" = @p4, "FirstName" = @p5, "ImageUrl" = @p6, "IsActive" = @p7, "LastName" = @p8, "LockoutEnabled" = @p9, "LockoutEnd" = @p10, "NormalizedEmail" = @p11, "NormalizedUserName" = @p12, "PasswordHash" = @p13, "PhoneNumber" = @p14, "PhoneNumberConfirmed" = @p15, "Publicid" = @p16, "RefreshToken" = @p17, "RefreshTokenExpiryTime" = @p18, "SecurityStamp" = @p19, "TwoFactorEnabled" = @p20, "UpdatedAt" = @p21, "UserName" = @p22
+WHERE "Id" = @p23 AND "ConcurrencyStamp" = @p24;
+2022-10-19 11:43:14.279 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-10-19 11:43:14.280 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.ConfirmEmail (UserManagement.API) in 486.9126ms
+2022-10-19 11:43:14.280 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.ConfirmEmail (UserManagement.API)'
+2022-10-19 11:43:14.280 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/confirm-email application/json 63 - 200 120 application/json;+charset=utf-8 513.8469ms
+2022-10-19 11:43:41.793 +01:00 [INF] Request starting HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/login - -
+2022-10-19 11:43:41.802 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:41.808 +01:00 [INF] Request finished HTTP/1.1 OPTIONS https://localhost:7224/api/v1/auth/login - - - 204 - - 15.7428ms
+2022-10-19 11:43:41.848 +01:00 [INF] Request starting HTTP/1.1 POST https://localhost:7224/api/v1/auth/login application/json 65
+2022-10-19 11:43:41.848 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:41.851 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:41.865 +01:00 [INF] CORS policy execution successful.
+2022-10-19 11:43:41.866 +01:00 [INF] Executing endpoint 'UserManagement.API.Controllers.AuthController.Login (UserManagement.API)'
+2022-10-19 11:43:41.891 +01:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(UserManagement.Core.DTOs.LoginDTO) on controller UserManagement.API.Controllers.AuthController (UserManagement.API).
+2022-10-19 11:43:42.073 +01:00 [INF] Executed DbCommand (78ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:43:42.757 +01:00 [INF] Executed DbCommand (94ms) [Parameters=[@__userId_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0
+2022-10-19 11:43:43.066 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-10-19 11:43:43.093 +01:00 [INF] Executed DbCommand (26ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."CreatedAt", a."Email", a."EmailConfirmed", a."FirstName", a."ImageUrl", a."IsActive", a."LastName", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."Publicid", a."RefreshToken", a."RefreshTokenExpiryTime", a."SecurityStamp", a."TwoFactorEnabled", a."UpdatedAt", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2
+2022-10-19 11:43:43.096 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p23='?', @p0='?' (DbType = Int32), @p1='?', @p24='?', @p2='?' (DbType = DateTime), @p3='?', @p4='?' (DbType = Boolean), @p5='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?', @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTime), @p11='?', @p12='?', @p13='?', @p14='?', @p15='?' (DbType = Boolean), @p16='?', @p17='?', @p18='?' (DbType = DateTime), @p19='?', @p20='?' (DbType = Boolean), @p21='?' (DbType = DateTime), @p22='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "CreatedAt" = @p2, "Email" = @p3, "EmailConfirmed" = @p4, "FirstName" = @p5, "ImageUrl" = @p6, "IsActive" = @p7, "LastName" = @p8, "LockoutEnabled" = @p9, "LockoutEnd" = @p10, "NormalizedEmail" = @p11, "NormalizedUserName" = @p12, "PasswordHash" = @p13, "PhoneNumber" = @p14, "PhoneNumberConfirmed" = @p15, "Publicid" = @p16, "RefreshToken" = @p17, "RefreshTokenExpiryTime" = @p18, "SecurityStamp" = @p19, "TwoFactorEnabled" = @p20, "UpdatedAt" = @p21, "UserName" = @p22
+WHERE "Id" = @p23 AND "ConcurrencyStamp" = @p24;
+2022-10-19 11:43:43.111 +01:00 [INF] User successfully logged in
+2022-10-19 11:43:43.112 +01:00 [INF] Executing ObjectResult, writing value of type 'UserManagement.Core.DTOs.ResponseDto`1[[UserManagement.Core.DTOs.CredentialResponseDTO, UserManagement.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-10-19 11:43:43.114 +01:00 [INF] Executed action UserManagement.API.Controllers.AuthController.Login (UserManagement.API) in 1223.6952ms
+2022-10-19 11:43:43.114 +01:00 [INF] Executed endpoint 'UserManagement.API.Controllers.AuthController.Login (UserManagement.API)'
+2022-10-19 11:43:43.115 +01:00 [INF] Request finished HTTP/1.1 POST https://localhost:7224/api/v1/auth/login application/json 65 - 200 1042 application/json;+charset=utf-8 1272.8198ms

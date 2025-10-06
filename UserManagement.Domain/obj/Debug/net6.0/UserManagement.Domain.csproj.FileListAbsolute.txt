@@ -1,0 +1,12 @@
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/bin/Debug/net6.0/UserManagement.Domain.deps.json
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/bin/Debug/net6.0/UserManagement.Domain.dll
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/bin/Debug/net6.0/UserManagement.Domain.pdb
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.csproj.AssemblyReference.cache
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.AssemblyInfoInputs.cache
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.AssemblyInfo.cs
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.csproj.CoreCompileInputs.cache
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.dll
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/refint/UserManagement.Domain.dll
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/UserManagement.Domain.pdb
+/Users/thebluehood/Desktop/DecagonC#/Live Project/Live/FinTech-SQ011B-UserService/UserManagement.Domain/obj/Debug/net6.0/ref/UserManagement.Domain.dll
